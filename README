@@ -1,0 +1,4 @@
+Copyright Josh Gachnang 2012
+
+django-ticket-tracker is a Django app for tracking tickets. The tickets can be 
+support requests, workflow management, bug tracking, help desk, or anything else.
