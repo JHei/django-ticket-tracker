@@ -1,6 +1,7 @@
 *~
 *.pyc
 
+db.sql
 # Ignore all the virtualenv stuff except the actual packages
 # themselves
 /bin
