@@ -1,0 +1,55 @@
+{% extends "ticket_base.html" %}
+
+{% block body %}
+<!-- ticket_list.html -->
+{% if user_tickets %}
+	<div id="user_tickets" >
+		<h2> Your Tickets </h2>
+
+		{% for ticket in user_tickets %}
+			<div class="ticket_line">
+				<ul class="tickets"> 
+					<li class="ticket_id tickets">#{{ ticket.id }}</li>
+					<li class="ticket_title tickets"><a href='/tickets/ticket/{{ ticket.id }}/'>{{ ticket.title }}</a> </li>
+					<li class="ticket_priority tickets">{{ ticket.priority }} </li>
+					<li class="ticket_queue tickets">{{ ticket.queue }} </li>
+					<li class="ticket_status tickets">{{ ticket.status_pretty }}</li>
+				</ul>
+			</div>
+		{% endfor %}
+	</div>
+{% endif %}
+
+<div id="unowned_tickets">
+	<h2> Unowned Tickets </h2>
+	{% for ticket in unowned_tickets %}
+		<div class="ticket_line">
+			<ul class="tickets">
+				<li class="ticket_id tickets">#{{ ticket.id }}</li>
+				<li class="ticket_title tickets"><a href='/tickets/ticket/{{ ticket.id }}/'>{{ ticket.title }}</a> </li>
+				<li class="ticket_priority tickets">{{ ticket.priority }} </li>
+				<li class="ticket_queue tickets">{{ ticket.queue }} </li>
+				<li class="ticket_status tickets">{{ ticket.status_pretty }}</li>
+			</ul>
+		</div>
+	{% endfor %}
+</div>
+
+<div id="queues">
+	<h2> Queues </h2>
+	<ul>
+	{% for queue in queues %}
+		<li><a href='/tickets/queue/{{ queue.url }}/'>{{ queue.title }} </a> New: {{ queue.new_count }}</li>
+	{% endfor %}
+	</ul>
+
+</div>
+
+<div id="create_ticket">
+	<h2> Create Ticket </h2>
+	<form method="POST" action="/tickets/ticket/{{ ticket.id }}/">{% csrf_token %} 
+		{{ form }}
+		<input type='submit'>
+	</form>
+</div>
+{% endblock %}

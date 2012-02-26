@@ -1,0 +1,16 @@
+{% extends "ticket_base.html" %}
+
+{% block body %}
+<h2>{{ queue.title }}</h2>
+{% for ticket in tickets %}
+<div class="ticket_line">
+<ul>
+<li class="ticket_id">#{{ ticket.id }}</li>
+<li class="ticket_title"><a href='/tickets/ticket/{{ ticket.id }}/'>{{ ticket.title }}</a> </li>
+<li class="ticket_priority">{{ ticket.priority }} </li>
+<li class="ticket_queue">{{ ticket.queue }} </li>
+<li class="ticket_status">{{ ticket.status_pretty }}</li>
+</ul>
+</div>
+{% endfor %}
+{% endblock %}

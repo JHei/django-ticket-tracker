@@ -1,0 +1,11 @@
+ul.tickets {
+list-style-type:none;
+display:inline;
+margin:0;
+padding:0;
+}
+
+li.tickets {
+display:inline;	
+margin-left:20px;
+}

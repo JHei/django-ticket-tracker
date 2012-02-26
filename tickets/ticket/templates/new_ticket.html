@@ -1,0 +1,12 @@
+<html>
+<head>
+
+</head>
+
+<body>
+<form method="POST" action="/tickets/view/{{ ticket.id }}/">{% csrf_token %} 
+{{ form }}
+<input type='submit'>
+</form>
+</body>
+</html>

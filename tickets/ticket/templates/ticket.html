@@ -1,0 +1,16 @@
+{% extends "ticket_base.html" %}
+
+{% block body %}
+<h2>{{ ticket.title }}</h2>
+<p>{{ ticket.description }}<p>
+<hr />
+{% for comment in comments %}
+<p>{{ comment.content }}</p>
+<hr /> 
+{% endfor %}
+<form method="POST" action="/tickets/ticket/{{ ticket.id }}/">{% csrf_token %} 
+{{ comment_form }}
+<p><input type='checkbox' name='email' value="">Email ticket owner?</p>
+<input type='submit'>
+</form>
+{% endblock %}
